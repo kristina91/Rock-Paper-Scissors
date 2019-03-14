@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors game</title>
+    <link rel="stylesheet" src="basic.css">
+</head>
+<body>
+    <div id="container">
+
+    </div>
+    <script>        
+        (function () {
+            let container = document.querySelector('#container');
+
+            // creating elements
+            let div_buttons = document.createElement('div');
+            div_buttons.setAttribute('class', 'buttons');
+
+            let div_display = document.createElement('div');
+            div_display.setAttribute('class', 'display');
+
+            let btn_rock = document.createElement('button');
+            let btn_paper = document.createElement('button');
+            let btn_scissors = document.createElement('button');
+            let btn_reset = document.createElement('button');
+
+            // adding attributes for buttons
+            btn_rock.setAttribute('class', 'choice rock');
+            btn_paper.setAttribute('class', 'choice paper');
+            btn_scissors.setAttribute('class', 'choice scissors');
+            btn_reset.setAttribute('class', 'choice reset');
+
+            // creating text for buttons
+            let btn_rock_text = document.createTextNode('ROCK');
+            let btn_paper_text = document.createTextNode('PAPER');
+            let btn_scissors_text = document.createTextNode('SCISSORS');
+            let btn_reset_text = document.createTextNode('RESET');
+
+            let dummy = document.createTextNode("LET'S PLAY");
+
+            let show_result_div = document.createElement('div');
+            show_result_div.setAttribute('class', 'result');
+
+            let div_message = document.createElement('div');
+            div_message.setAttribute('class', 'message');
+
+            // text on page
+            let user = document.createTextNode('YOU ');
+            let comp = document.createTextNode(' COMP');
+            let result_you = document.createTextNode('0');
+            let result_comp = document.createTextNode('0');
+            let separation = document.createTextNode(':');
+
+            show_result_div.appendChild(user);
+            show_result_div.appendChild(result_you);
+            show_result_div.appendChild(separation);
+            show_result_div.appendChild(result_comp);
+            show_result_div.appendChild(comp);
+
+            div_display.appendChild(dummy);
+
+            let info_message = document.createTextNode('Who wins 5 times is a winner!');
+            div_message.appendChild(info_message);
+
+            // adding text to buttons
+            btn_rock.appendChild(btn_rock_text);
+            btn_paper.appendChild(btn_paper_text);
+            btn_scissors.appendChild(btn_scissors_text);
+            btn_reset.appendChild(btn_reset_text);
+
+            div_buttons.appendChild(btn_rock);
+            div_buttons.appendChild(btn_paper);
+            div_buttons.appendChild(btn_scissors);
+            div_buttons.appendChild(btn_reset);
+
+            let footer = document.createElement('div');
+            footer.setAttribute('class', 'footer');
+
+            let footerText = document.createTextNode("Made by ");
+            let footerLinkText = document.createTextNode('Kristina');
+
+            let footerInfo = document.createElement('p');
+            let footerLink = document.createElement('a');
+
+            footerLink.setAttribute('href', 'https://github.com/kristina91');
+
+            footerLink.appendChild(footerLinkText);
+            
+            footerInfo.appendChild(footerText);
+            footerInfo.appendChild(footerLink);
+
+            footer.appendChild(footerInfo);
+
+            // adding everything to a page
+            container.appendChild(show_result_div);
+            container.appendChild(div_display);
+            container.appendChild(div_buttons);
+            container.appendChild(div_message);
+            container.appendChild(footer);
+
+        })();
+
+    </script>
+
+    <style>
+        body {
+            max-width: 99%;
+            min-width: 40%;
+            background-color: rgb(220, 230, 221);
+        }
+
+        #container {
+            display: grid;
+            grid-template-columns: 10em 1fr 10em;
+            grid-template-rows: auto auto auto auto;
+        }
+
+        .buttons {
+            width: 100%;
+            grid-column: 2 / 3;
+            grid-row: 3/4;
+            display: grid;
+            grid-template-columns: auto auto auto; 
+            grid-template-rows: auto auto;
+        }
+
+        .rock {
+            grid-column: 1 / 2;
+            grid-row: 1;
+        }
+
+        .paper {
+            grid-column: 2 / 3;
+            grid-row: 1;
+        }
+
+        .scissors {
+            grid-column: 3 / 4;
+            grid-row: 1;
+        }
+
+        .reset {
+            grid-column: 1 / 4;
+            grid-row: 2;
+        }
+
+        .choice {
+            border: 3px solid rgb(135, 156, 212);
+            border-radius: 20px;
+            margin: 5px;
+            padding: 10px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 20px;
+            color: rgb(135, 156, 212);;
+        }
+
+        .choice:active {
+            border: 3px solid rgb(42, 83, 197);
+            color: rgb(42, 83, 197);
+        }
+
+        .display {
+            border-bottom: 5px double rgb(135, 156, 212);
+            grid-column: 2 / 3;
+            grid-row: 1/2;
+            padding: 2em;
+            text-align: center;
+            font-size: 1.5em;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-style: italic;
+            color: rgb(159, 172, 209);
+        }
+
+        .result {
+            grid-column: 2 / 3;
+            grid-row: 2/3;
+            text-align: center;
+            padding: 1em;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: rgb(83, 88, 141);
+        }
+
+        .message {
+            grid-column: 2 / 3;
+            grid-row: 4/5;
+            text-align: center;
+            padding: 1em;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 2em;
+            color: rgb(83, 88, 141);
+        }
+
+        .footer {
+            grid-row: 5;
+            grid-column: 1 / 4;
+            text-align: center;
+            font-size: 20px;
+            color: rgb(83, 88, 141); 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transform: rotate(-10deg);
+        }
+
+        .footer a {
+            text-decoration: none;
+            font-weight: bolder;
+            color: rgb(65, 70, 124); 
+        }
+
+        .footer a:hover {
+            color: rgb(83, 88, 141); 
+        }
+    </style>
+
+    <script src="game.js"></script>
+</body>
+</html>
